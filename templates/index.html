@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <link rel="icon" type="image/x-icon" href="https://i.ibb.co/WHp1tTH/favicon.png">
+  <title>Hash It!</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Indie+Flower&family=Special+Elite&display=swap');
+    
+    body {
+      background-color: #444654;
+      color: #ffffff;
+      font-family: 'Special Elite', cursive;
+      padding-top: 50px;
+    }
+
+    h1 {
+      color: #ffffff;
+      text-align: center;
+    }
+
+    form {
+      margin: 0 auto;
+      max-width: 300px;
+      margin-top: 20px;
+    }
+
+    label {
+      display: block;
+      margin-bottom: 10px;
+      color: #ffffff;
+    }
+
+    input[type="text"],
+    input[type="number"],
+    input[type="submit"],
+    input[type="checkbox"] {
+      width: 100%;
+      padding: 10px;
+      margin-bottom: 15px;
+      border-radius: 20px;
+      border: none;
+      background-color: #343541;
+      color: #ffffff;
+    }
+
+    input[type="submit"] {
+      background-color: #343541;
+      cursor: pointer;
+    }
+
+    .output {
+      background-color: #343541;
+      padding: 10px;
+      border-radius: 5px;
+      margin-top: 40px;
+    }
+
+    .output p {
+      margin: 0;
+    }
+
+    .checkbox-label {
+      display: flex;
+      align-items: center;
+      margin-bottom: 10px;
+      margin-left: 10px;
+      color: #ffffff;
+    }
+
+    .checkbox-label input[type="checkbox"] {
+      display: none;
+    }
+
+    .checkbox-label input[type="checkbox"] + label {
+      background-image: url("https://i.ibb.co/PghMnVD/notchecked.png");
+      background-size: cover;
+      width: 20px;
+      height: 20px;
+      display: inline-block;
+      cursor: pointer;
+      margin-right: 9px;
+    }
+
+    .checkbox-label input[type="checkbox"]:checked + label {
+      background-image: url("https://i.ibb.co/cX27Pfc/checked.png");        
+    }
+
+    .container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      margin-bottom: 100px;
+    }
+
+    .input-group {
+      margin-bottom: 10px;
+      width: 100%;
+    }
+
+    .input-group label {
+      text-align: left;
+    }
+
+    .input-group input[type="text"],
+    .input-group input[type="number"] {
+      width: 100%;
+      background-color: #343541;
+      color: #ffffff;
+    }
+
+    .submit-group {
+      text-align: center;
+      margin-top: 50px;
+    }
+
+    .instructions {
+    text-align: center;
+    margin-top: 50px;
+    max-width: 500px;
+    margin: 0 auto;
+    margin-bottom: 200px;
+  }
+  
+  .instructions h3 {
+    text-align: center;
+    margin-bottom: 40px;
+  }
+  
+  .instructions ol {
+    text-align: left;
+  }
+
+  .instructions .step {
+    margin-bottom: 30px; /* İstediğiniz boşluğu burada ayarlayabilirsiniz */
+  }
+  
+  </style>
+</head>
+<body>
+  <div class="container">
+    <a href="https://imgbb.com/"><img src="https://i.ibb.co/gJWc0t2/hashit.png" alt="hashit" border="0"></a>
+
+    <form method="POST" action="/">
+      <div class="input-group">
+        <label for="user_input">Enter an input:</label>
+        <input type="text" id="user_input" name="user_input">
+      </div>
+
+      <div class="input-group">
+        <label for="first_digits">Number of first characters:</label>
+        <input type="number" id="first_digits" name="first_digits">
+      </div>
+
+      <div class="input-group">
+        <label for="last_digits">Number of last characters:</label>
+        <input type="number" id="last_digits" name="last_digits">
+      </div>
+
+      <div class="checkbox-label">
+        <input type="checkbox" id="last_first" name="last_first">
+        <label for="last_first"></label>
+        Last characters first
+      </div>
+
+      <div class="submit-group">
+        <input type="submit" value="Generate Mixed Hash">
+      </div>
+    </form>
+
+    {% if error %}
+      <div class="output error">
+        <p>{{ error }}</p>
+      </div>
+    {% elif output %}
+      <div class="output">
+        <p>{{ output }}</p>
+      </div>
+    {% endif %}
+  </div>
+
+  <div class="instructions">
+    <h3>How to Use?</h3>
+    <ol>
+      <li class="step">Write the text you want to use as input.</li>
+      <li class="step">Write how many characters you want to get from the beginning of the resulting SHA256 hash.</li>
+      <li class="step">Write how many characters you want to get from the end of the resulting SHA256 hash.</li>
+      <li class="step">If you want the result to be "FirstCharacters!LastCharacters", leave the checkbox unchecked. If you want it to be "LastCharacters!FirstCharacters", check the checkbox.</li>
+    </ol>
+  </div>
+</body>
+</html>
